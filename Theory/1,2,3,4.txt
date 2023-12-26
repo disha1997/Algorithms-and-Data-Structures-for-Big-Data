@@ -1,0 +1,5 @@
+1,2,3,4
+2,8,9,10
+
+1,2,2,3,4,8,9,10
+O(n) is the time complexity of merge.

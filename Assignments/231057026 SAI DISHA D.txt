@@ -1,0 +1,40 @@
+class Graph:
+    def __init__(self):
+        self.graph = {}
+
+    def add_edge(self, u, v):
+        self.graph.setdefault(u, []).append(v)
+        self.graph.setdefault(v, []).append(u)
+
+    def dfs(self, node, visited, component):
+        visited[node] = True
+        component.append(node)
+
+        for neighbor in self.graph[node]:
+            if not visited[neighbor]:
+                self.dfs(neighbor, visited, component)
+
+    def connected_components(self):
+        visited = {node: False for node in self.graph}
+        components = []
+
+        for node in self.graph:
+            if not visited[node]:
+                component = []
+                self.dfs(node, visited, component)
+                components.append(component)
+
+        return components
+
+if __name__ == "__main__":
+  
+    graph = Graph()
+    graph.add_edge(0, 1)
+    graph.add_edge(1, 2)
+    graph.add_edge(3, 4)
+
+
+    components = graph.connected_components()
+
+    for i, component in enumerate(components):
+        print(f"Connected Component {i + 1}: {component}")

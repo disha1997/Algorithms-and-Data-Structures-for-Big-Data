@@ -1,0 +1,11 @@
+Problem:
+Professor Diogenes has supposedly identical VLSI chips that in principle are capable of testing each other. The professor’s test jig accommodates two chips at a time. When the jig is loaded, each chip tests the other and reports whether it is good or bad. A good chip always reports accurately whether the other chip is good or bad, but the answer of a bad chip cannot be trusted. Thus, the four possible outcomes of a test are as follows:
+Chip A says Chip B Says Conclusion
+-------------- ---------------- ---------------------------------
+B is good | A is good   | both are good, or both are bad
+B is good | A is bad    | at least one is bad
+B is bad  | A is good    | at least one is bad
+B is bad  | A is bad     | at least one is bad
+ 
+a) Consider the problem of finding a single good chip from among n chips, assuming that more than n/2 of the chips are good. Show that [n/2] pairwise tests are sufficient to reduce the problem to one of nearly half the size.
+b) Show that the good chips can be identified with O(n) (proportional to n) pairwise tests, assuming that more than n/2 of the chips are good. Give and solve the recurrence that describes the number of tests.

@@ -1,0 +1,41 @@
+Lossy Counting and Sketching are techniques used in data stream processing to approximate the 
+frequency of elements in a large dataset with limited memory resources.
+
+Lossy Counting:
+
+Objective:
+Lossy Counting is designed to estimate the frequency of elements in a data stream when the 
+data doesn't fit into memory. It allows for a controlled amount of error in the frequency estimation.
+
+Algorithm:
+1. Initialize a support threshold `s` and a bucket size `b`.
+2. Process each element in the stream one by one.
+3. Maintain a hash table to store the elements and their counts.
+4. At each step, increment the count of the element in the hash table.
+5. Periodically, check each element in the hash table:
+   - If the count is less than or equal to `s - b`, remove the element from the table.
+6. Continue processing the stream until the end.
+
+Output:
+The elements remaining in the hash table at the end, along with their counts, 
+are the approximate frequency counts of the elements in the stream.
+
+Sketching (Count-Min Sketch):
+
+Objective:
+Count-Min Sketch is a probabilistic data structure used to estimate the frequency of elements in a 
+data stream with limited memory.
+Algorithm:
+1. Initialize a 2D array (matrix) `CM` of size `k` by `w`, where `k` is the number of hash functions and 
+`w` is the width of each hash function.
+2. For each element in the stream, hash it using each of the `k` hash functions to get `k` indices.
+3. Increment the counters at the corresponding indices in the matrix.
+4. To estimate the frequency of an element, take the minimum value among the counters at its hashed indices.
+
+Output:
+The Count-Min Sketch provides an approximate frequency count for each element in the stream. 
+It may overestimate due to hash collisions, but it will never underestimate.
+
+Both Lossy Counting and Count-Min Sketch are useful in scenarios where you need to process 
+large amounts of data in a streaming fashion and want to maintain approximate counts without 
+storing all data in memory.
